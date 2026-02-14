@@ -10,161 +10,133 @@
             --primary-white: #ffffff;
             --accent-color: #00d2ff;
             --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.3);
-            --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+            --glass-border: rgba(255, 255, 255, 0.25);
         }
 
-        /* Tối ưu hóa cho cả desktop và mobile */
+        /* Loại bỏ hoàn toàn nền đen */
         body, html {
             margin: 0;
             padding: 0;
             min-height: 100vh;
             font-family: 'Segoe UI', Roboto, sans-serif;
-            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             color: var(--primary-white);
-            overflow-x: hidden; /* Tránh tràn ngang */
+            background: transparent;
+            overflow-x: hidden;
         }
 
-        /* Hình nền mượt mà */
+        /* Hình nền cố định, không bị che khuất */
         .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('http://i.postimg.cc/dsw-mFxk5/anh-nen-hoc-vien.jpg'); 
+            background-image: url('https://i.postimg.cc/dsw-mFxk5/anh-nen-hoc-vien.jpg'); 
             background-size: cover;
             background-position: center;
             z-index: -2;
-            transform: scale(1.05);
         }
 
-        /* Lớp phủ mỏng để tăng độ tương phản cho chữ */
+        /* Lớp phủ cực mỏng để chữ không bị lẫn vào nền */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2); 
+            background: rgba(0, 0, 0, 0.1); 
             z-index: -1;
         }
 
         .container {
             width: 100%;
-            max-width: 1200px;
-            padding: 40px 20px;
+            max-width: 900px;
+            padding: 20px;
             text-align: center;
             z-index: 1;
-            box-sizing: border-box;
         }
 
-        /* Tiêu đề chính rực rỡ */
+        /* Làm nổi bật tiêu đề bằng bóng đổ sâu */
         h1 {
-            font-size: clamp(1.8rem, 6vw, 3.5rem);
+            font-size: clamp(1.5rem, 5vw, 2.8rem);
             margin: 0 0 10px 0;
             font-weight: 800;
             text-transform: uppercase;
-            text-shadow: var(--text-shadow), 0 0 20px rgba(0, 210, 255, 0.5);
-        }
-
-        .sub-info {
-            margin-bottom: 40px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 210, 255, 0.4);
         }
 
         h2 {
-            font-size: clamp(1.1rem, 3vw, 1.8rem);
-            font-weight: 600;
+            font-size: clamp(1rem, 3vw, 1.5rem);
             margin: 5px 0;
-            text-shadow: var(--text-shadow);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         .class-tag {
             display: inline-block;
-            margin-top: 10px;
-            padding: 5px 20px;
-            background: rgba(0, 210, 255, 0.2);
-            border-radius: 50px;
-            border: 1px solid var(--accent-color);
-            font-size: 1.2rem;
+            margin-top: 5px;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-            letter-spacing: 2px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            letter-spacing: 1.5px;
         }
 
-        /* Card layout */
         .card-container {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
+        /* Thu nhỏ khung chọn (Card) */
         .card {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            padding: 40px 20px;
-            border-radius: 24px;
-            width: 280px;
+            padding: 25px 15px; /* Giảm padding */
+            border-radius: 20px;
+            width: 220px; /* Thu nhỏ chiều rộng */
             text-decoration: none;
             color: white;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.03);
+            transform: translateY(-10px) scale(1.05);
             background: rgba(255, 255, 255, 0.2);
             border-color: var(--accent-color);
-            box-shadow: 0 20px 40px rgba(0, 210, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3);
         }
 
-        /* Số thứ tự */
-        .number-badge {
-            font-size: 1rem;
-            font-weight: 800;
-            background: var(--accent-color);
-            color: #000;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            box-shadow: 0 0 15px var(--accent-color);
-        }
-
+        /* Icon thi cử mới */
         .icon {
-            font-size: 4rem;
+            font-size: 3rem; /* Thu nhỏ icon */
             margin-bottom: 15px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
         }
 
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             margin: 0;
             text-align: center;
-            text-shadow: var(--text-shadow);
-            line-height: 1.4;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            line-height: 1.3;
         }
 
-        /* Responsive Mobile */
+        /* Tối ưu Mobile */
         @media (max-width: 600px) {
-            body { align-items: flex-start; } /* Cuộn từ trên xuống */
-            .container { padding: 30px 15px; }
-            .card { width: 100%; max-width: 320px; padding: 30px 15px; }
-            h1 { line-height: 1.2; }
+            .container { padding-top: 50px; }
+            .card { width: 100%; max-width: 280px; padding: 20px; }
+            h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -183,14 +155,12 @@
 
         <div class="card-container">
             <a href="https://thi-trac-nghiem-vhpt-dang-1.vercel.app/" target="_blank" rel="noopener noreferrer" class="card">
-                <div class="number-badge">1</div>
-                <span class="icon">📑</span>
+                <span class="icon">✍️</span>
                 <h3>Dạng 1<br>Chọn 1 đáp án</h3>
             </a>
 
             <a href="https://thi-trac-nghiem-vhpt-dang-2.vercel.app/" target="_blank" rel="noopener noreferrer" class="card">
-                <div class="number-badge">2</div>
-                <span class="icon">✅</span>
+                <span class="icon">📜</span>
                 <h3>Dạng 2<br>Chọn đáp án Đúng/Sai</h3>
             </a>
         </div>
