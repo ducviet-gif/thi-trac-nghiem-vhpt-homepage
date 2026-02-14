@@ -9,186 +9,176 @@
         :root {
             --primary-white: #ffffff;
             --accent-color: #00d2ff;
-            /* Độ trong suốt cực cao để thấy rõ ảnh nền */
-            --glass-bg: rgba(255, 255, 255, 0.05); 
+            --glass-bg: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.3);
-            --text-glow: 0 0 15px rgba(0, 210, 255, 0.8);
+            --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
         }
 
+        /* Tối ưu hóa cho cả desktop và mobile */
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
+            min-height: 100vh;
             font-family: 'Segoe UI', Roboto, sans-serif;
-            overflow: hidden;
-            /* Đảm bảo body không có màu nền đặc che ảnh */
-            background: transparent; 
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             color: var(--primary-white);
+            overflow-x: hidden; /* Tránh tràn ngang */
         }
 
-        /* Hình nền Parallax - Không có lớp phủ đen */
+        /* Hình nền mượt mà */
         .background {
             position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('http://i.postimg.cc/dsw-mFxk5/anh-nen-hoc-vien.jpg'); 
             background-size: cover;
             background-position: center;
-            z-index: -2; /* Đẩy xuống cùng */
-            will-change: transform;
-            transition: transform 0.1s ease-out;
+            z-index: -2;
+            transform: scale(1.05);
         }
 
-        /* Lớp phủ cực mỏng để làm nổi chữ mà không mất ảnh */
+        /* Lớp phủ mỏng để tăng độ tương phản cho chữ */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.15); /* Chỉ làm tối 15% để ảnh vẫn rõ */
+            background: rgba(0, 0, 0, 0.2); 
             z-index: -1;
         }
 
         .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px 20px;
             text-align: center;
             z-index: 1;
-            perspective: 1200px;
-            background: transparent; /* Đảm bảo khối giữa không có màu nền */
+            box-sizing: border-box;
         }
 
-        /* Tiêu đề rực rỡ và nổi bật */
+        /* Tiêu đề chính rực rỡ */
         h1 {
-            font-size: clamp(2rem, 6vw, 3.8rem);
-            margin-bottom: 5px;
-            font-weight: 900;
-            color: #fff;
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
+            margin: 0 0 10px 0;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: -1px;
-            /* Đổ bóng chữ cực mạnh để nổi trên mọi nền */
-            text-shadow: 0 0 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.8), var(--text-glow);
-            animation: glowPulse 3s infinite alternate;
+            text-shadow: var(--text-shadow), 0 0 20px rgba(0, 210, 255, 0.5);
         }
 
         .sub-info {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         h2 {
-            font-weight: 700;
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            margin: 0;
-            text-shadow: 2px 2px 10px rgba(0,0,0,1);
+            font-size: clamp(1.1rem, 3vw, 1.8rem);
+            font-weight: 600;
+            margin: 5px 0;
+            text-shadow: var(--text-shadow);
         }
 
-        .class-name {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5), 2px 2px 5px rgba(0,0,0,1);
+        .class-tag {
+            display: inline-block;
             margin-top: 10px;
-            letter-spacing: 3px;
+            padding: 5px 20px;
+            background: rgba(0, 210, 255, 0.2);
+            border-radius: 50px;
+            border: 1px solid var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+            letter-spacing: 2px;
         }
 
+        /* Card layout */
         .card-container {
             display: flex;
-            gap: 40px;
+            gap: 25px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
 
-        /* Link click dạng kính mờ (Glassmorphism) */
         .card {
             background: var(--glass-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 2px solid var(--glass-border);
-            padding: 50px 30px;
-            border-radius: 30px;
-            width: 300px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 40px 20px;
+            border-radius: 24px;
+            width: 280px;
             text-decoration: none;
             color: white;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .card:hover {
-            transform: translateY(-20px) rotateX(10deg) scale(1.05);
-            background: rgba(0, 210, 255, 0.15); /* Đổi màu xanh nhẹ khi hover */
+            transform: translateY(-10px) scale(1.03);
+            background: rgba(255, 255, 255, 0.2);
             border-color: var(--accent-color);
-            box-shadow: 0 25px 60px rgba(0, 210, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 210, 255, 0.3);
         }
 
-        .card h3 {
-            font-size: 1.4rem;
-            margin: 0;
-            font-weight: 700;
-            text-shadow: 2px 2px 5px rgba(0,0,0,1);
+        /* Số thứ tự */
+        .number-badge {
+            font-size: 1rem;
+            font-weight: 800;
+            background: var(--accent-color);
+            color: #000;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px var(--accent-color);
         }
 
         .icon {
-            font-size: 5rem;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.5));
-            transition: transform 0.3s ease;
+            font-size: 4rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
         }
 
-        .card:hover .icon {
-            transform: translateZ(50px) scale(1.1);
+        .card h3 {
+            font-size: 1.3rem;
+            margin: 0;
+            text-align: center;
+            text-shadow: var(--text-shadow);
+            line-height: 1.4;
         }
 
-        @keyframes glowPulse {
-            from { text-shadow: 0 0 10px rgba(0,0,0,1), var(--text-glow); }
-            to { text-shadow: 0 0 10px rgba(0,0,0,1), 0 0 30px rgba(0, 210, 255, 1); }
-        }
-
-        @media (max-width: 768px) {
-            .card { width: 85%; }
-            h1 { font-size: 1.8rem; }
+        /* Responsive Mobile */
+        @media (max-width: 600px) {
+            body { align-items: flex-start; } /* Cuộn từ trên xuống */
+            .container { padding: 30px 15px; }
+            .card { width: 100%; max-width: 320px; padding: 30px 15px; }
+            h1 { line-height: 1.2; }
         }
     </style>
 </head>
 <body>
 
-    <div class="background" id="bg"></div>
+    <div class="background"></div>
     <div class="overlay"></div>
 
     <div class="container">
         <h1>Hệ thống ôn tập thi trắc nghiệm trực tuyến</h1>
+        
         <div class="sub-info">
             <h2>Môn: Văn hoá Phát triển</h2>
-            <div class="class-name">Lớp: K76.A03</div>
+            <div class="class-tag">Lớp: K76.A03</div>
         </div>
 
         <div class="card-container">
-            <a href="https://thi-trac-nghiem-vhpt-dang-1.vercel.app/" target="_blank" rel="noopener noreferrer" class="card">
-                <span class="icon">📘</span>
-                <h3>Dạng 1<br>Chọn 1 đáp án</h3>
-            </a>
-
-            <a href="https://thi-trac-nghiem-vhpt-dang-2.vercel.app/" target="_blank" rel="noopener noreferrer" class="card">
-                <span class="icon">⚖️</span>
-                <h3>Dạng 2<br>Chọn đáp án Đúng/Sai</h3>
-            </a>
-        </div>
-    </div>
-
-    <script>
-        const bg = document.getElementById('bg');
-        document.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.clientX) / 45;
-            const y = (window.innerHeight / 2 - e.clientY) / 45;
-            bg.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
-        });
-    </script>
-</body>
-</html>
